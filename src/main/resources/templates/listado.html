@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layouts/head :: head}"></head>
+
+<body>
+    <header th:insert="~{layouts/header :: header}"></header>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pelicula : ${peliculas}">
+                    <th th:text="${pelicula.nombre}" scope="row"></th>
+                    <td th:text="${pelicula.genero.nombre}"></td>
+                    <td> 
+                        <a th:href="@{'/peliculas/' + ${pelicula.id}}">Editar</a>
+                        <a th:href="@{'/peliculas/' + ${pelicula.id} + '/delete'}" class="text-danger">Eliminar</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
