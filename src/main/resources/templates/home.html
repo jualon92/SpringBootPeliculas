@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layouts/head :: head}"></head>
+
+<body>
+    <header th:insert="~{layouts/header :: header}"></header>
+
+    
+    <div class="card-group">
+        <div class="card"  th:each="pelicula : ${peliculas}">
+          <img class="card-img-top" style="width:100px; height:100px" th:src="@{${'/archivo?n='} + ${pelicula.imagen == null ? 'default.jpg' : pelicula.imagen} }" alt="Card image cap">
+          <div class="card-body" > 
+            <h5 class="card-title" th:text="${pelicula.nombre}"></h5>
+            <p class="card-text" th:text="${pelicula.genero.nombre}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"  ><small class="text-muted">Last updated 3 mins ago</small></p>
+        
+            <div class="catalogo-actor-container"  th:each="protagonista : ${pelicula.protagonistas}">
+                <div class="catalogo-actor-imagen" th:style="'background-image:url(' + ${protagonista.urlImagen} +  ')'"></div>
+                <div class="catalogo-actor-texto" th:text="${protagonista.nombre}"></div>
+         
+          </div>
+        </div>
+        </div>
+       
+      </div>
+</body>
+
+</html>
