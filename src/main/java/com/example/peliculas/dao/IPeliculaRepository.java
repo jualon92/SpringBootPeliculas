@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.example.peliculas.entities.Pelicula;
 
 public interface IPeliculaRepository extends JpaRepository<Pelicula, Long >{ 
-   
+     
 }
